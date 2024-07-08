@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import jwt, { JwtPayload } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 import config from '../config';
 import { IDecodedToken } from '../interface/tokenInterface';

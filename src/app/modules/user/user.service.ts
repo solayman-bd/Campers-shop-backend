@@ -42,13 +42,13 @@ const signInUser = async (
 
     // Check if user exists
     if (!user) {
-      throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid email or password');
+      throw new AppError(httpStatus.UNAUTHORIZED, 'No user found..');
     }
 
     // Check if password is correct
     const isPasswordValid = await user.comparePassword(payload.password);
     if (!isPasswordValid) {
-      throw new AppError(httpStatus.UNAUTHORIZED, 'Invalid email or password');
+      throw new AppError(httpStatus.UNAUTHORIZED, 'Password is invalid....');
     }
     //create token and sent to the  client
 
