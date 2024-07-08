@@ -4,6 +4,7 @@ import sendResponse, { sendNotFoundResponse } from '../../utils/sendResponse';
 import { productServices } from './product.service';
 import { Request, Response } from 'express';
 import { Types } from 'mongoose';
+import { IGetProductsParams } from './product.interface';
 const createAProduct = catchAsync(async (req: Request, res: Response) => {
   const result = await productServices.createAProduct(req.body);
 
@@ -29,7 +30,6 @@ const getAllProducts = catchAsync(async (req: Request, res: Response) => {
 });
 
 const updateAProduct = catchAsync(async (req: Request, res: Response) => {
-  const { userId } = req.user;
   const { productId, updatedData } = req.body;
   // Check if the productId is a valid ObjectId
   if (!Types.ObjectId.isValid(productId)) {
@@ -40,11 +40,7 @@ const updateAProduct = catchAsync(async (req: Request, res: Response) => {
       data: null,
     });
   }
-  const result = await productServices.updateAProduct(
-    userId,
-    productId,
-    updatedData,
-  );
+  const result = await productServices.updateAProduct(productId, updatedData);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -54,7 +50,6 @@ const updateAProduct = catchAsync(async (req: Request, res: Response) => {
   });
 });
 const deleteAProduct = catchAsync(async (req: Request, res: Response) => {
-  const { userId } = req.user;
   const { productId } = req.body;
   // Check if the productId is a valid ObjectId
   if (!Types.ObjectId.isValid(productId)) {
@@ -65,7 +60,7 @@ const deleteAProduct = catchAsync(async (req: Request, res: Response) => {
       data: null,
     });
   }
-  const result = await productServices.deleteAProduct(userId, productId);
+  const result = await productServices.deleteAProduct(productId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -138,6 +133,40 @@ const getAllCategories = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+
+const getProductsByQuery = catchAsync(async (req: Request, res: Response) => {
+  const {
+    searchItem,
+    filterByCategory,
+    filterByPriceRangeMin,
+    filterByPriceRangeMax,
+    sort,
+    page,
+    limit,
+  } = req.query;
+
+  const params: IGetProductsParams = {
+    searchItem: searchItem as string,
+    filterByCategory: filterByCategory as string,
+    filterByPriceRangeMin: filterByPriceRangeMin as string,
+    filterByPriceRangeMax: filterByPriceRangeMax as string,
+    sort: sort as 'asc' | 'desc',
+    page: parseInt(page as string, 10) || 1, // Provide default value for page
+    limit: parseInt(limit as string, 10) || 10, // Provide default value for limit
+  };
+
+  const products = await productServices.getProductsByQuery(params);
+  if (!products || products.length == 0) {
+    sendNotFoundResponse(res);
+  }
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'All products fetched successfully..',
+    data: products,
+  });
+});
+
 export const productControllers = {
   createAProduct,
   getAllProducts,
@@ -146,4 +175,5 @@ export const productControllers = {
   getASingleProduct,
   getBestSellingProducts,
   getAllCategories,
+  getProductsByQuery,
 };

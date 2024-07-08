@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import IProduct, {
   IGetProductsParams,
   IProductConditions,
-  ISortOption,
 } from './product.interface';
 import ProductModel from './product.model';
 import AppError from '../../errors/AppError';
@@ -40,16 +39,10 @@ const getAllProducts = async () => {
 };
 
 const updateAProduct = async (
-  userId: mongoose.Types.ObjectId,
   productId: mongoose.Types.ObjectId,
   payload: Partial<IProduct>,
 ): Promise<IProduct | null> => {
   try {
-    const user = await UserModel.findById(userId).lean();
-    if (!user) {
-      throw new AppError(httpStatus.NOT_FOUND, 'User not found.');
-    }
-
     const updatedProduct = await ProductModel.findByIdAndUpdate(
       productId,
       { $set: payload },
@@ -69,16 +62,8 @@ const updateAProduct = async (
   }
 };
 
-const deleteAProduct = async (
-  userId: mongoose.Types.ObjectId,
-  productId: mongoose.Types.ObjectId,
-) => {
+const deleteAProduct = async (productId: mongoose.Types.ObjectId) => {
   try {
-    const user = await UserModel.findById(userId).lean();
-    if (!user) {
-      throw new AppError(httpStatus.NOT_FOUND, 'User not found.');
-    }
-
     const product = await ProductModel.findById(productId).lean();
     if (!product) {
       throw new AppError(httpStatus.NOT_FOUND, 'Product not found.');
