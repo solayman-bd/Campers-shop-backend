@@ -91,3 +91,9 @@ The technology stack used in the Camper Shop project includes:
    PORT=5000
    DATABASE_URL=
    ```
+4. run command:
+
+```bash
+   npm run start:dev
+
+```
