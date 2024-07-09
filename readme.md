@@ -73,6 +73,7 @@ The technology stack used in the Camper Shop project includes:
   ```bash
   npm -v
   ```
+- **Git Bash:** Install Git Bash to run Git commands on Windows. You can download it from [Git for Windows](https://gitforwindows.org/).
 
 ### Installation Steps
 
