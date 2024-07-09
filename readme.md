@@ -1,10 +1,10 @@
 <div align="center">
-  <h1>Camper Shop</h1>
+  <h1>Project Overview</h1>
 </div>
 
 ---
 
-# Project Name
+# Project Name: Camper Shop Backend
 
 ## Introduction
 
