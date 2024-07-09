@@ -6,7 +6,6 @@ import IProduct, {
 import ProductModel from './product.model';
 import AppError from '../../errors/AppError';
 import httpStatus from 'http-status';
-import UserModel from '../user/user.model';
 
 const createAProduct = async (payload: IProduct) => {
   try {

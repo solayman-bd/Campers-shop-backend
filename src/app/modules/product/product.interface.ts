@@ -1,6 +1,7 @@
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 // Define interface for Product document
 export default interface IProduct extends Document {
+  _id: Types.ObjectId;
   name: string;
   description: string;
   price: number;
