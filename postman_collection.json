@@ -1,0 +1,271 @@
+{
+  "collection": {
+    "info": {
+      "_postman_id": "439504dd-1edc-4135-939d-daadf222e523",
+      "name": "Campers Shop",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "updatedAt": "2024-07-08T23:55:02.000Z",
+      "createdAt": "2024-07-08T18:47:53.000Z",
+      "lastUpdatedBy": "32110446",
+      "uid": "32110446-439504dd-1edc-4135-939d-daadf222e523"
+    },
+    "item": [
+      {
+        "name": "Product",
+        "item": [
+          {
+            "name": "Create A Product",
+            "id": "2aac566b-dfcb-45a6-98f3-3faad62df243",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "POST",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"name\": \"Bamping Tent\",\r\n    \"description\": \"Spacious tent for family camping trips\",\r\n    \"price\": 149.99,\r\n    \"stock\": 50,\r\n    \"category\": \"Tents\",\r\n    \"ratings\": 4,\r\n    \"images\": [\"tent1.jpg\", \"tent1_2.jpg\"],\r\n    \"isFeatured\": true,\r\n    \"salesCount\": 25\r\n  }",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{local_url}}/api/product/create-a-product",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "create-a-product"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-2aac566b-dfcb-45a6-98f3-3faad62df243"
+          },
+          {
+            "name": "Get All Products",
+            "id": "a0dfd202-97f8-4032-ab70-cd417cf85269",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{local_url}}/api/product/get-all-products",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "get-all-products"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-a0dfd202-97f8-4032-ab70-cd417cf85269"
+          },
+          {
+            "name": "Get All Categories",
+            "id": "9709af62-4437-4a7c-90b0-f9eb9f1c7694",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{local_url}}/api/product/get-all-categories",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "get-all-categories"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-9709af62-4437-4a7c-90b0-f9eb9f1c7694"
+          },
+          {
+            "name": "Get Best Selling Products",
+            "id": "ac174b42-ae87-4ba1-8c80-6cfacaa6fbcd",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{local_url}}/api/product/get-best-selling-products",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "get-best-selling-products"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-ac174b42-ae87-4ba1-8c80-6cfacaa6fbcd"
+          },
+          {
+            "name": "Get A Single Product",
+            "id": "4fc29874-f2d2-4144-b80b-6573e39a1dd7",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{local_url}}/api/product/668c82c0c7e447242555cd62",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "668c82c0c7e447242555cd62"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-4fc29874-f2d2-4144-b80b-6573e39a1dd7"
+          },
+          {
+            "name": "Get Products By Query",
+            "id": "55219b01-f972-4dec-92df-20ce302a4984",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "GET",
+              "header": [],
+              "url": {
+                "raw": "{{local_url}}/api/product?searchItem=Solar&filterByPriceRangeMax=200",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product"],
+                "query": [
+                  {
+                    "key": "searchItem",
+                    "value": "Solar"
+                  },
+                  {
+                    "key": "filterByCategory",
+                    "value": "Camp Showers",
+                    "disabled": true
+                  },
+                  {
+                    "key": "filterByPriceRangeMin",
+                    "value": "50",
+                    "disabled": true
+                  },
+                  {
+                    "key": "filterByPriceRangeMax",
+                    "value": "200"
+                  },
+                  {
+                    "key": "sort",
+                    "value": "asc",
+                    "disabled": true
+                  }
+                ]
+              }
+            },
+            "response": [],
+            "uid": "32110446-55219b01-f972-4dec-92df-20ce302a4984"
+          },
+          {
+            "name": "Delete A Single Product",
+            "id": "dd31e9ae-1be3-42b8-8360-bcc26c0af4f7",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "DELETE",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhjNDIyMTZlYmYzYjFjYzRmOGRkMzUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MjA0Njg0ODEsImV4cCI6MTcyMDU0MDQ4MX0.muEhdHifm79FUBFEo5Q_DHn8jGywkKBQav6kNV5DnUc",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"productId\":\"668c82c0c7e447242555cd63\"\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{local_url}}/api/product/delete-a-product",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "delete-a-product"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-dd31e9ae-1be3-42b8-8360-bcc26c0af4f7"
+          },
+          {
+            "name": "Update A Product",
+            "id": "ab379727-f57c-45e6-8009-1306c192a093",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "PATCH",
+              "header": [
+                {
+                  "key": "Authorization",
+                  "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjhjNDIyMTZlYmYzYjFjYzRmOGRkMzUiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MjA0Njg0ODEsImV4cCI6MTcyMDU0MDQ4MX0.muEhdHifm79FUBFEo5Q_DHn8jGywkKBQav6kNV5DnUc",
+                  "type": "text"
+                }
+              ],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n    \"productId\":\"668c82c0c7e447242555cd62\",\r\n    \"updatedData\":{\r\n        \"price\":80,\r\n        \"image\":[\"https://example.com1/sleepingbag1.jpg\"]\r\n    }\r\n}",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{local_url}}/api/product/update-a-product",
+                "host": ["{{local_url}}"],
+                "path": ["api", "product", "update-a-product"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-ab379727-f57c-45e6-8009-1306c192a093"
+          }
+        ],
+        "id": "f5181226-437f-44b7-806a-72aa08c90f30",
+        "uid": "32110446-f5181226-437f-44b7-806a-72aa08c90f30"
+      },
+      {
+        "name": "Order",
+        "item": [
+          {
+            "name": "Place and order",
+            "id": "b01aae2c-8c24-42fd-87db-e66ffef607e7",
+            "protocolProfileBehavior": {
+              "disableBodyPruning": true
+            },
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"phoneNumber\": \"+1234567890\",\r\n  \"deliveryAddress\": \"123 Main St, Anytown, USA\",\r\n  \"productDetails\": [\r\n    {\r\n      \"productId\": \"668c82c0c7e447242555cd61\",\r\n      \"quantity\": 2,\r\n      \"totalPrice\": 299.98\r\n    },\r\n    {\r\n      \"productId\": \"668c82c0c7e447242555cd62\",\r\n      \"quantity\": 1,\r\n      \"totalPrice\": 80\r\n    },\r\n    {\r\n      \"productId\": \"668c82c0c7e447242555cd63\",\r\n      \"quantity\": 1,\r\n      \"totalPrice\": 39.95\r\n    }\r\n  ],\r\n  \"totalCost\": 419.93,\r\n  \"paymentMethod\": \"stripe\"\r\n}\r\n",
+                "options": {
+                  "raw": {
+                    "language": "json"
+                  }
+                }
+              },
+              "url": {
+                "raw": "{{local_url}}/api/order/create-an-order",
+                "host": ["{{local_url}}"],
+                "path": ["api", "order", "create-an-order"]
+              }
+            },
+            "response": [],
+            "uid": "32110446-b01aae2c-8c24-42fd-87db-e66ffef607e7"
+          }
+        ],
+        "id": "94f6bc13-9a93-4b23-a6af-923549249fe9",
+        "uid": "32110446-94f6bc13-9a93-4b23-a6af-923549249fe9"
+      }
+    ]
+  }
+}
