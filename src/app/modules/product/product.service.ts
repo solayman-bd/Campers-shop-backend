@@ -110,13 +110,25 @@ const getBestSellingProducts = async () => {
 
 const getAllCategories = async () => {
   try {
-    const categories = await ProductModel.distinct('category');
-    return categories;
+    const categoriesWithImages = await ProductModel.aggregate([
+      {
+        $group: {
+          _id: '$category',
+          image: { $first: '$images' },
+        },
+      },
+      {
+        $project: {
+          image: { $arrayElemAt: ['$image', 0] },
+        },
+      },
+    ]);
+    return categoriesWithImages;
   } catch (err) {
     if (err instanceof Error) {
-      throw new Error(err.message); // If it's a standard Error object, throw its message
+      throw new Error(err.message);
     } else {
-      throw new Error('Unknown error occurred'); // Handle other types of errors
+      throw new Error('Unknown error occurred');
     }
   }
 };
