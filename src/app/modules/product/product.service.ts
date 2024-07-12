@@ -25,7 +25,7 @@ const createAProduct = async (payload: IProduct) => {
 const getAllProducts = async () => {
   try {
     // Create the product if payload is valid
-    const result = await ProductModel.find({});
+    const result = await ProductModel.find({}).sort({ _id: -1 });
     return result;
   } catch (err) {
     // Handle errors appropriately

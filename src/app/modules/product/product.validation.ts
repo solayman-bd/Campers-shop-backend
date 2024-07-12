@@ -30,7 +30,8 @@ const ProductValidationSchema = z.object({
     salesCount: z
       .number()
       .int()
-      .min(0, { message: 'Sales count must be a non-negative integer' }),
+      .min(0, { message: 'Sales count must be a non-negative integer' })
+      .optional(),
   }),
 });
 

@@ -9,7 +9,7 @@ export default interface IProduct extends Document {
   category: string;
   ratings: number;
   isFeatured: boolean;
-  salesCount: number;
+  salesCount?: number;
   images: string[];
 }
 // interfaces/IGetProductsParams.ts
